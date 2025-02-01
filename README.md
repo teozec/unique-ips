@@ -18,10 +18,11 @@ Adds the posted IP address to logs.
 Accepts GET requests. Responds with the number of unique logged IP addresses in the following format:
 `{ "count": 5 }`
 
+## Next steps
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Some steps to make the project more complete:
+- add logging middleware for routes
+- benchmark to understand if it can handle the expected load
 
 ## MakeFile
 
