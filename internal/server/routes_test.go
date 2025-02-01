@@ -75,6 +75,7 @@ func TestVisitorsResponseFormat(t *testing.T) {
 	}
 }
 
+// End-to-end test to see if the endpoints are wirking as expected
 func TestHandlers(t *testing.T) {
 	uniqueIpCalculator := services.NewUniqueIpCalculator()
 	logsHandler := handleLogs(uniqueIpCalculator)
@@ -120,6 +121,7 @@ func TestHandlers(t *testing.T) {
 		t.Errorf("expected 30 unique ips, got %d", count)
 	}
 
+	// Insert the same 30 IPs and ensure that the count does not change
 	count = logIPsAndGetUniqueCount(ips1, visitorsHandler, logsHandler)
 	if count != 30 {
 		t.Errorf("expected 30 unique ips, got %d", count)
@@ -165,6 +167,7 @@ func TestHandlers(t *testing.T) {
 	}
 }
 
+// Utility function to post some ips and get the count from /visitors
 func logIPsAndGetUniqueCount(ips []string, visitorsHandler http.Handler, logsHandler http.Handler) int {
 	for _, ip := range ips {
 		body, _ := json.Marshal(map[string]string{
