@@ -55,6 +55,7 @@ func handleVisitors(uniqueIpCalculator services.UniqueIpCalculator) http.Handler
 		func(w http.ResponseWriter, r *http.Request) {
 			switch r.Method {
 			case "GET", "":
+				w.Header().Set("Content-Type", "application/json")
 				// Build the response
 				count := uniqueIpCalculator.GetUniqueIpNumber()
 				data := map[string]int{"count": count}
