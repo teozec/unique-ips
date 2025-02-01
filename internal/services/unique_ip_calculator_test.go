@@ -25,9 +25,10 @@ func TestUniqueIpCalculator(t *testing.T) {
 	u.LogIp("192.168.1.1")
 	u.LogIp("192.168.1.2")
 	u.LogIp("192.168.1.4")
+	u.LogIp("192.168.1.5")
 
 	count = u.GetUniqueIpNumber()
-	if count != 4 {
-		t.Fatalf("expected 4 unique ips, got %d", count)
+	if count != 5 {
+		t.Fatalf("expected 5 unique ips, got %d", count)
 	}
 }
