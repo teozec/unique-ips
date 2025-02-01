@@ -7,16 +7,16 @@ build:
 	@echo "Building..."
 	
 	
-	@go build -o main cmd/api/main.go
+	go build ${BUILD_OPTIONS} -o main cmd/api/main.go
 
 # Run the application
 run:
-	@go run cmd/api/main.go
+	@go run ${RUN_OPTIONS} cmd/api/main.go
 
 # Test the application
 test:
 	@echo "Testing..."
-	@go test ./... -v
+	@go test ${TEST_OPTIONS} ./... -v
 
 # Clean the binary
 clean:
