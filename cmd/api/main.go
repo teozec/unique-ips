@@ -41,14 +41,14 @@ func gracefulShutdown(apiServer *http.Server, done chan bool) {
 
 func main() {
 
-	value, ok := os.LookupEnv("PORT")
-	if !ok {
-		value = "5000"
+	var port int
+	if value, ok := os.LookupEnv("PORT"); ok {
+		port, _ = strconv.Atoi(value)
+	} else {
+		port = 5000
 	}
 
-	port, _ := strconv.Atoi(value)
 	uniqueIpCalculator := services.NewUniqueIpCalculator()
-
 	server := server.NewServer(port, uniqueIpCalculator)
 
 	// Create a done channel to signal when the shutdown is complete
@@ -57,6 +57,7 @@ func main() {
 	// Run graceful shutdown in a separate goroutine
 	go gracefulShutdown(server, done)
 
+	log.Printf("Listening on port %d", port)
 	err := server.ListenAndServe()
 	if err != nil && err != http.ErrServerClosed {
 		panic(fmt.Sprintf("http server error: %s", err))
