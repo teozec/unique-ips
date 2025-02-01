@@ -10,7 +10,7 @@ func TestUniqueIpCalculator(t *testing.T) {
 
 	count = u.GetUniqueIpNumber()
 	if count != 0 {
-		t.Fatalf("expected 0 unique ips, got %d", count)
+		t.Errorf("expected 0 unique ips, got %d", count)
 	}
 
 	u.LogIp("192.168.1.1")
@@ -19,7 +19,7 @@ func TestUniqueIpCalculator(t *testing.T) {
 
 	count = u.GetUniqueIpNumber()
 	if count != 3 {
-		t.Fatalf("expected 3 unique ips, got %d", count)
+		t.Errorf("expected 3 unique ips, got %d", count)
 	}
 
 	u.LogIp("192.168.1.1")
@@ -29,6 +29,6 @@ func TestUniqueIpCalculator(t *testing.T) {
 
 	count = u.GetUniqueIpNumber()
 	if count != 5 {
-		t.Fatalf("expected 5 unique ips, got %d", count)
+		t.Errorf("expected 5 unique ips, got %d", count)
 	}
 }
