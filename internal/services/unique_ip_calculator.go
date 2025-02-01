@@ -11,9 +11,9 @@ type UniqueIpCalculator struct {
 	sync       chan struct{}       // Channel used for synchronizing access to unique_ips
 }
 
-func NewUniqueIpCalculator() *UniqueIpCalculator {
+func NewUniqueIpCalculator() UniqueIpCalculator {
 
-	unique_calculator := &UniqueIpCalculator{
+	unique_calculator := UniqueIpCalculator{
 		logs:       make(chan string),
 		unique_ips: make(map[string]struct{}),
 		sync:       make(chan struct{}),

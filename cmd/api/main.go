@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/teozec/unique-ips/internal/server"
+	"github.com/teozec/unique-ips/internal/services"
 )
 
 func gracefulShutdown(apiServer *http.Server, done chan bool) {
@@ -46,8 +47,9 @@ func main() {
 	}
 
 	port, _ := strconv.Atoi(value)
+	uniqueIpCalculator := services.NewUniqueIpCalculator()
 
-	server := server.NewServer(port)
+	server := server.NewServer(port, uniqueIpCalculator)
 
 	// Create a done channel to signal when the shutdown is complete
 	done := make(chan bool, 1)
