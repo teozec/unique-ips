@@ -1,6 +1,6 @@
 # Project github.com/teozec/unique-ips
 
-This microservice calculates the number of unique IPs in the los.
+This microservice calculates the number of unique IPs in the logs.
 Logs are sent to the `/logs` endpoint, and the number of unique IPs is returned by the `/visitors` endpoint.
 By default, it listens on port 5000. It can be changed using the `PORT` environment variable.
 
