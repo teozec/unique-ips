@@ -2,6 +2,22 @@
 
 This microservice calculates the number of unique IPs in the los.
 Logs are sent to the `/logs` endpoint, and the number of unique IPs is returned by the `/visitors` endpoint.
+By default, it listens on port 5000. It can be changed using the `PORT` environment variable.
+
+## Endpoints
+
+### `/logs`
+
+Accepts POST requests in the following format:
+`{ "timestamp": "2020-06-24T15:27:00.123456Z", "ip": "83.150.59.250", "url": ... }`
+
+Adds the posted IP address to logs.
+
+### `/visitors`
+
+Accepts GET requests. Responds with the number of unique logged IP addresses in the following format:
+`{ "count": 5 }`
+
 
 ## Getting Started
 
